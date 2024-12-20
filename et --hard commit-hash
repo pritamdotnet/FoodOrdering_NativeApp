@@ -1,0 +1,29 @@
+[33mcommit ea3f5531caf6ac213ebc9d04c2c9162b313bf897[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: pritam kumar <pritam18jan@gmail.com>
+Date:   Thu Dec 19 16:13:16 2024 +0530
+
+    FlatList added
+
+[33mcommit 4d3253154d9c22e24ff258392814f8f4e06d90fb[m
+Author: pritam kumar <pritam18jan@gmail.com>
+Date:   Thu Dec 19 16:01:10 2024 +0530
+
+    Type safe component
+
+[33mcommit c56a3d65645d187a307ac7885d09356edbaff5c1[m
+Author: pritam kumar <pritam18jan@gmail.com>
+Date:   Thu Dec 19 15:38:22 2024 +0530
+
+    custom component productListitem
+
+[33mcommit cc885a697eea376bc6355ebb9fc1c34b90567398[m
+Author: pritam kumar <pritam18jan@gmail.com>
+Date:   Thu Dec 19 15:20:28 2024 +0530
+
+    ui changed
+
+[33mcommit c4ed9acd8102d8f89a1c82bdb98c7658813943a8[m
+Author: pritam kumar <pritam18jan@gmail.com>
+Date:   Thu Dec 19 13:12:11 2024 +0530
+
+    Initial commit
