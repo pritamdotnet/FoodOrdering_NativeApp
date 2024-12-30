@@ -11,7 +11,9 @@ export default function MenuStack() {
         options={{
           title: 'Menu',
           headerRight: () => (
-            <Link href="/" asChild>
+            <Link href="/(admin)/menu/create" asChild
+           // onPress={() => console.log("Navigating to CreateProductScreen")}
+            >
               <Pressable>
                 {({ pressed }) => (
                   <FontAwesome

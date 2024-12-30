@@ -12,7 +12,7 @@ const sizes: PizzaSize[] = ['S', 'M', 'L', 'XL'];
 
 const ProductDetailsScreen = () => {
   const { items } = useCart();
-  console.log('ProductDetailsScreen context items:', items);
+ // console.log('ProductDetailsScreen context items:', items);
   const { id } = useLocalSearchParams();
   const { addItem } = useCart();
   const router = useRouter();
