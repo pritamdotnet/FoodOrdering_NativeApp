@@ -5,56 +5,59 @@ import { randomUUID } from 'expo-crypto';
 type CartType = {
     items: CartItem[];
     addItem: (product: Product, size: CartItem['size']) => void;
-    updateQuantity: ( itemId: string, amount: -1 | 1 ) => void;
-
+    updateQuantity: (itemId: string, amount: -1 | 1) => void;
+    total: number;
 };
 
 const CartContext = createContext<CartType>({
     items: [],
-    addItem: () => {},
-    updateQuantity: () => {},
+    addItem: () => { },
+    updateQuantity: () => { },
+    total: 0,
 });
 
 const CartProvider = ({ children }: PropsWithChildren) => {
     const [items, setItems] = useState<CartItem[]>([]);
 
-    const addItem = (product: Product, size: CartItem['size']) =>{
-    // if already in cart, increment quantity
-    const existingItem = items.find(
-        item => item.product === product && item.size === size
-    );
+    const addItem = (product: Product, size: CartItem['size']) => {
+        // if already in cart, increment quantity
+        const existingItem = items.find(
+            item => item.product === product && item.size === size
+        );
 
-    if (existingItem) {
-        updateQuantity(existingItem.id, 1);
-        return;
-    }
+        if (existingItem) {
+            updateQuantity(existingItem.id, 1);
+            return;
+        }
         const newCartItem: CartItem = {
             id: randomUUID(), // generate
             product,
             product_id: product.id,
             size,
             quantity: 1,
-          };
-          setItems([newCartItem, ...items]);
+        };
+        setItems([newCartItem, ...items]);
         //  console.log(items);
-       // console.warn("products", product);
+        // console.warn("products", product);
     };
     console.log('Current cart items:', items); // This should log every time items are updated
-   // updateQuantity
+    // updateQuantity
 
-   const updateQuantity = ( itemId: string, amount: -1 | 1 ) => {
-    const updatedItems = 
-    setItems(
-        items.map((item) => 
-            item.id !== itemId 
-                ? item 
-                : {...item, quantity: item.quantity + amount } 
-        ).filter((item) => item.quantity > 0)
-    );
-   };
-  
-//    console.log(items);
+    const updateQuantity = (itemId: string, amount: -1 | 1) => {
+        const updatedItems =
+            setItems(
+                items.map((item) =>
+                    item.id !== itemId
+                        ? item
+                        : { ...item, quantity: item.quantity + amount }
+                ).filter((item) => item.quantity > 0)
+            );
+    };
 
+    const total = items.reduce((sum, item) => (sum += item.product.price * item.quantity), 0);
+
+
+    //    console.log(items);
 
     // const addItem = (product: Product, size: CartItem['size']) => {
     //     setItems((prevItems) => {
@@ -65,7 +68,7 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     //         size,
     //         quantity: 1,
     //       };
-      
+
     //       // Append the new item to the existing array
     //       const updatedItems = [newCartItem, ...prevItems];
     //       console.log('Adding item:', newCartItem);
@@ -73,12 +76,12 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     //       return updatedItems;
     //     });
     //   };
-    
-   
 
-   
+
+
+
     return (
-        <CartContext.Provider value={{ items, addItem, updateQuantity }}>
+        <CartContext.Provider value={{ items, addItem, updateQuantity, total }}>
             {children}
         </CartContext.Provider>
     );
