@@ -3,3 +3,10 @@
 
  // order.ts
  // npm install dayjs
+
+ // for nested navigation 
+ // npm install @react-navigation/material-top-tabs react-native-tab-view
+ // npm install react-native-pager-view
+// if making for ios 
+// npx pod-install ios
+ 
