@@ -9,4 +9,9 @@
  // npm install react-native-pager-view
 // if making for ios 
 // npx pod-install ios
+
+// for backend supabase 
+// npm install @supabase/supabase-js
+// npm install react-native-elements @react-native-async-storage/async-storage react-native-url-polyfill
+// npx expo install expo-secure-store
  
