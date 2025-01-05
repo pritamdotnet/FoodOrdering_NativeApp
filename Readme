@@ -18,4 +18,9 @@
 // React Query [FOR DO CRUD]
 
 // npm i @tanstack/react-query
+
+// create @type file according to database
+// npx supabase gen types typescript --project-id your_project_id > src/database.types.ts
+
+//
  
