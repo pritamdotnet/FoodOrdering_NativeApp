@@ -14,4 +14,8 @@
 // npm install @supabase/supabase-js
 // npm install react-native-elements @react-native-async-storage/async-storage react-native-url-polyfill
 // npx expo install expo-secure-store
+
+// React Query [FOR DO CRUD]
+
+// npm i @tanstack/react-query
  

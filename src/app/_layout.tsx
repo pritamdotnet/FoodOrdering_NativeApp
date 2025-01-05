@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import CartProvider from '@/providers/CartProvider';
 import AuthProvider from '@/providers/AuthProvider';
+import QueryProvider from '@/providers/QueryProvider';
 
 
 
@@ -57,6 +58,7 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <AuthProvider>
+        <QueryProvider>
       <CartProvider>
       <Stack>
       <Stack.Screen name="(admin)" options={{ headerShown: false }} />
@@ -65,6 +67,7 @@ function RootLayoutNav() {
         <Stack.Screen name="cart" options={{ presentation: 'modal' }} />
       </Stack>
       </CartProvider>
+      </QueryProvider>
       </AuthProvider>
     </ThemeProvider>
   );
