@@ -22,5 +22,7 @@
 // create @type file according to database
 // npx supabase gen types typescript --project-id your_project_id > src/database.types.ts
 
+// image upload on supabase 
+// npx expo install expo-file-system base64-arraybuffer
 //
  

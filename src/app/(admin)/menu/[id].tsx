@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet ,Pressable, ActivityIndicator} from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
 // import products from '@assets/data/products';
@@ -10,6 +10,7 @@ import { PizzaSize } from '@/types';
 import { FontAwesome } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useProduct } from '@/api/products';
+import RemoteImage from '@/components/RemoteImage';
 
 const sizes: PizzaSize[] = ['S', 'M', 'L', 'XL'];
 
@@ -18,8 +19,8 @@ const ProductDetailsScreen = () => {
 
   const { id: idString } = useLocalSearchParams();
   const id = parseFloat(typeof idString === 'string' ? idString : idString[0]);
-  const  {data: product, error, isLoading} = useProduct(id);
-  
+  const { data: product, error, isLoading } = useProduct(id);
+
   const { addItem } = useCart();
   const router = useRouter();
 
@@ -27,9 +28,9 @@ const ProductDetailsScreen = () => {
   const [selectedSize, setSelectedSize] = useState<PizzaSize>('M');
 
   // const product = products.find((p) => p.id.toString() === id);
-  
+
   const addToCart = () => {
-    if(!product){
+    if (!product) {
       return;
     }
     addItem(product, selectedSize);
@@ -46,7 +47,7 @@ const ProductDetailsScreen = () => {
 
   return (
     <View>
-<Stack.Screen
+      <Stack.Screen
         options={{
           title: 'Menu',
           headerRight: () => (
@@ -68,7 +69,13 @@ const ProductDetailsScreen = () => {
 
 
       <Stack.Screen options={{ title: product.name }} />
-      <Image source={{ uri: product.image || defaultPizzaImage }} style={styles.image} />
+
+      {/* <Image source={{ uri: product.image || defaultPizzaImage }}  */}
+      <RemoteImage
+        path={product?.image}
+        fallback={defaultPizzaImage}
+      style={styles.image} 
+      />
 
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price}</Text>
