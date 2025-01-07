@@ -11,7 +11,7 @@ const index = () => {
   if (loading) {
     return <ActivityIndicator />;
   }
-
+   console.log({ session, loading, isAdmin });
   if (!session) {
     return <Redirect href={'/sign-in'} />
   }

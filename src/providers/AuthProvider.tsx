@@ -49,7 +49,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
       });
     }, []);
 
-    // console.log(profile);
+    //  console.warn(profile,session);
    
     return (
         <Authcontext.Provider 

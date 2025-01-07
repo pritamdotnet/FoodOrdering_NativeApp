@@ -5,6 +5,7 @@ export default function AuthLayout() {
   const  { session } = useAuth();
 
   if (session) {
+    // console.warn("User is logged in auth:", session.user);
     return <Redirect href={'/'} />;
   }
 

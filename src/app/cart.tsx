@@ -6,8 +6,8 @@ import CartListItem from '@/components/CartListItem';
 import Button from '@/components/Button';
 
 const CartScreen = () => {
-  const { items , total } = useCart();
-  console.log('CartScreen items and total:', items , total);
+  const { items , total, checkout } = useCart();
+  // console.log('CartScreen items and total:', items , total);
 
   return (
     <View style={{ padding: 10 }}>
@@ -16,7 +16,7 @@ const CartScreen = () => {
         contentContainerStyle={{ gap: 10 }}
       />
       <Text style={{ marginTop: 20, fontSize: 20, fontWeight: '500'}}>Total: ${total}</Text>
-      <Button text="Checkout" />
+      <Button onPress={checkout} text="Checkout" />
 
       {/* <Text>Cart Items length : {items.length}</Text> */}
       {/* <Text>Cart Items length : {Array.isArray(items) ? items.length : 0}</Text> */}
