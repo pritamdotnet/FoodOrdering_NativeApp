@@ -20,16 +20,17 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { session } = useAuth();
 
+  console.warn('TabLayout session:', session);
+
   if (!session) {
-    return <Redirect href={'/'}/>
+    console.log('Redirecting to "/" because session is null.');
+    return <Redirect href={'/(auth)/sign-in'}/>
   }
 
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
         headerShown: useClientOnlyValue(false, true),
       }}>
 
@@ -50,6 +51,14 @@ export default function TabLayout() {
           title: 'Orders',
           headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
+        }}
+      />
+
+        <Tabs.Screen
+          name="profile"
+          options={{
+          title: 'Profile',
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </Tabs>

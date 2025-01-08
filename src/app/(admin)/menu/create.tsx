@@ -85,13 +85,14 @@ useEffect(() => {
     });
   };
 
-  const onUpdate = () => {
+  const onUpdate = async () => {
     if(!validateInput()){
       return;
     }
+    const imagePath = await uploadImage();
     // save in database
     updateProduct(
-      { id, name, price:parseFloat(price),image },
+      { id, name, price:parseFloat(price),image: imagePath },
       {
         onSuccess: () => {
           resetFields();
