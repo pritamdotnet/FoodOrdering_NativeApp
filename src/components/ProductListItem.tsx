@@ -1,19 +1,35 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, Image, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
+import { Tables } from '../types';
+import { Link, useSegments } from 'expo-router'
+import RemoteImage from './RemoteImage';
 
-interface Product {
-    image: string;
-    name: string;
-    price: number;
-  }
+export const defaultPizzaImage =
+  'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png';
 
-const ProductListItem = ({ product }: { product: Product }) => {
-  return (
-    <View style={styles.container}>
-      <Image source={{ uri: product.image }} style={styles.image} />
+type ProductListItemProps = {
+    product: Tables<'products'>;
+  };
+
+const ProductListItem = ({ product }: ProductListItemProps)  => {
+ // console.log('Product in ProductListItem:', product);
+const segments = useSegments();
+ 
+ return (
+    <Link href={`/${segments[0]}/menu/${product.id}`} asChild>
+    <Pressable style={styles.container}>
+      <RemoteImage
+        path={product.image}
+        fallback={defaultPizzaImage}
+      //  source={{ uri: product.image || defaultPizzaImage  }} 
+       style={styles.image} 
+       resizeMode="contain"
+       />
+
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price}</Text>
-    </View>
+    </Pressable>
+    </Link>
   );
 };
 export default ProductListItem;
